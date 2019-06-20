@@ -1,4 +1,4 @@
-/* Tabulator v4.2.5 (c) Oliver Folkerd */
+/* Tabulator vcustom-build (c) Oliver Folkerd */
 
 var ResizeTable = function ResizeTable(table) {
 	this.table = table; //hold Tabulator object

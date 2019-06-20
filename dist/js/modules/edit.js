@@ -1,6 +1,6 @@
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-/* Tabulator v4.2.5 (c) Oliver Folkerd */
+/* Tabulator vcustom-build (c) Oliver Folkerd */
 
 var Edit = function Edit(table) {
 	this.table = table; //hold Tabulator object
@@ -155,7 +155,8 @@ Edit.prototype.edit = function (cell, e, forceEdit) {
 
 	//prevent editing if another cell is refusing to leave focus (eg. validation fail)
 	if (this.currentCell) {
-		if (!this.invalidEdit) {
+		// only cancel the edit if the event was not bubbled up from another element
+		if (!this.invalidEdit && e.eventPhase === 0) {
 			this.cancelEdit();
 		}
 		return;
