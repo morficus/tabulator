@@ -150,7 +150,8 @@ Edit.prototype.edit = function(cell, e, forceEdit){
 
 	//prevent editing if another cell is refusing to leave focus (eg. validation fail)
 	if(this.currentCell){
-		if(!this.invalidEdit){
+		// only cancel the edit if the event was not bubbled up from another element
+		if(!this.invalidEdit && e.eventPhase === 0){
 			this.cancelEdit();
 		}
 		return;
